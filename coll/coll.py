@@ -1,7 +1,6 @@
 # coding=utf-8
 import sys
 
-
 a = [1, 2, 3]
 print type(a)
 
@@ -61,3 +60,9 @@ print(a)
 print a[2]
 b = a[:3]
 print b
+
+a = [1,2,3,4,5]
+print a[-1]
+print a[-3:-1]
+a = [1,2,3,4,5]
+print a[:-2]
