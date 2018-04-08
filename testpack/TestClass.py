@@ -1,3 +1,5 @@
+# coding=utf-8
+
 class a:
     def __init__(self):
         """ init """
