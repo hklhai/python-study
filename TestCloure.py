@@ -1,3 +1,5 @@
+#coding=utf-8
+
 def f1(a):
     def f2(b):
         return a + b
