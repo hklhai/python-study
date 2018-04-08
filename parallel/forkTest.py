@@ -11,6 +11,7 @@ def myfork():
     if pid == 0:
         print "this is child %d" % pid
     else:
+        os.waitpid(pid,0)
         print "this is parent %d" % pid
 
 if __name__ == '__main__':
