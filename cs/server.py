@@ -1,7 +1,7 @@
 # coding=utf-8
 import socket
 
-server = ("192.168.1.6", 9998)
+server = ("127.0.0.1", 9998)
 # socket.AF_INET IPv4   SOCK_STREAM THHP协议
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 sock.bind(server)
