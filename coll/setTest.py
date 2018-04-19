@@ -2,13 +2,13 @@
 
 a = [1, 1, 2, 3, 3, 4, 4, 5]
 b = set(a)
-print type(b)
-print b
+print(type(b))
+print(b)
 
 # map
 a = [1, 2, 3, 4]
 b = map(lambda x: x * 2, a)
-print  b
+print(b)
 
 # reduce
 c = reduce(lambda x, y: x + y, a)
@@ -29,7 +29,7 @@ import os
 b = os.walk(".")
 print(b)
 
-print [e for e in b]
+print([e for e in b])
 
 
 # StopIteration
@@ -48,7 +48,8 @@ def f(m):
 
 
 b = fab(6)
-print type(b)
-print type(f)
+print(type(b))
 
-print b.next()
+print(type(f))
+
+print(b.next())

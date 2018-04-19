@@ -9,10 +9,10 @@ def myfork():
     """
     pid = os.fork()
     if pid == 0:
-        print "this is child %d" % pid
+        print ("this is child %d" % pid)
     else:
         os.waitpid(pid,0)
-        print "this is parent %d" % pid
+        print ("this is parent %d" % pid)
 
 if __name__ == '__main__':
     myfork()

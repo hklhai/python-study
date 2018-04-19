@@ -21,19 +21,19 @@ class b(a):
         print(self.m + self.n)
 
     def mm(self):
-        print "mm"
+        print("mm")
         self.m = 8
         self.__p()
 
     def __p(self):
-        print "private func"
+        print("private func")
 
     def __ee__(self):
-        print "exception"
+        print("exception")
         try:
             fu()
-        except Exception, e:
-            print e.message
+        except Exception as e:
+            print(e.message)
 
     def passTest(self):
         pass

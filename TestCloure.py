@@ -9,8 +9,8 @@ def f1(a):
 
 q = f1(2)
 p = f1(3)
-print q
-print p
+print(q)
+print(p)
 
 print(q(3))
 print(p(23))

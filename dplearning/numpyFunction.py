@@ -4,7 +4,7 @@ from numpy import pi
 
 print(np.arange(15))
 a = np.arange(15).reshape(3, 5)
-print a
+print(a)
 print(a.shape)
 # 矩阵维度dimensions
 print(a.ndim)
@@ -40,15 +40,15 @@ print(e)
 
 a = np.array([20, 30, 40, 50])
 b = np.arange(4)
-print a
-print b
+print(a)
+print(b)
 c = a - b
-print c
+print(c)
 c = c - 1
-print c
+print(c)
 
 d = b ** 2
-print  d
+print(d)
 
 """
 矩阵乘法
@@ -57,6 +57,6 @@ print  d
 A = np.array([[1, 1], [0, 1]])
 B = np.array([[2, 0], [3, 4]])
 # 对应位置相乘
-print (A * B)
-print (A.dot(B))
+print(A * B)
+print(A.dot(B))
 print(np.dot(A, B))

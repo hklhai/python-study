@@ -7,6 +7,6 @@ sock.connect(server)
 sock.send("hello")
 
 data = sock.recv(1024)
-print 'echo', data
+print( 'echo', data)
 
 sock.close()

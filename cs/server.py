@@ -7,7 +7,7 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 sock.bind(server)
 sock.listen(5)  # 监听5个请求
 conn, address = sock.accept()
-print "connect by ", address
+print("connect by ", address)
 while True:
     data = conn.recv(1024)
     if not data:

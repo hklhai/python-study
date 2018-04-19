@@ -12,7 +12,7 @@ matrix = numpy.array([[5, 10, 15], [23, 33, 44], [45, 67, 77]])
 print(matrix.shape)
 
 print(vector)
-print (matrix)
+print(matrix)
 
 """
 NumPy
@@ -62,7 +62,7 @@ print(15 == matrix)
 """
 
 bo = 2 == numbers
-print (numbers[bo])
+print(numbers[bo])
 
 matrix = numpy.array([[5, 10, 15], [23, 33, 44], [45, 67, 77]])
 # 第二列是否包含25
@@ -100,4 +100,3 @@ matrix = numpy.array([[5, 10, 15], [23, 33, 44], [45, 67, 77]])
 # 1 each row，0 each column
 print(matrix.sum(axis=1))
 print(matrix.sum(axis=0))
-
