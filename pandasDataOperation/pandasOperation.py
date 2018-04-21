@@ -76,3 +76,14 @@ normalized_protein = food_info["Protein_(g)"] / food_info["Protein_(g)"].max()
 food_info["Normalized_Fat"] = normalized_fat
 food_info["Normalized_Protein"] = normalized_protein
 print(food_info.shape)
+
+"""
+数据预处理
+"""
+# Sorts the DataFrame in-place, rather than=True returning a new dataframe
+food_info.sort_values("Sodium_(mg)", inplace=True)
+print(food_info["Sodium_(mg)"])
+food_info.sort_values("Sodium_(mg)", inplace=True, ascending=False)
+print(food_info["Sodium_(mg)"])
+
+
