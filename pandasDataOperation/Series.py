@@ -77,5 +77,5 @@ deviations = float_df.apply(lambda x: np.std(x))
 lambda 对每个指标计算标准差
 """
 rt_mt_user = float_df[["RT_user_norm", "Metacritic_user_nom"]]
-rt_mt_user.apply(lambda x: np.std(x), axis=1)
+rt_mt_user.apply(lambda x: np.std(x), axis=1) # axis=1 表示行
 print(rt_mt_user)
