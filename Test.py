@@ -20,3 +20,15 @@ print(b)
 a = ('a', 1, 2, 3, "sss")
 for o in a:
     print(o)
+
+import os
+
+# files = os.listdir("C:\\Users\\lenovo\\Desktop\\excel")
+# for ele in files:
+#     print(ele)
+path = "C:\\Users\\lenovo\\Desktop\\excel"
+file_list = os.listdir(path)
+file_path = [os.path.join(path, filename) for filename in file_list if filename.endswith('xlsx')]
+for path in file_path:
+    path = path.replace('\\', '\\\\')
+    print(path)

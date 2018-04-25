@@ -1,32 +1,73 @@
 # coding=utf-8
-import openpyxl
+import os
+import xlrd
+from numpy import *
+import xlwt
 
-def cpoy_sheet():
-    """
-    python3读写excel
-    """
-    # 读取数据
-    wb1 = openpyxl.load_workbook(r'C:\Users\lenovo\Desktop\excel\A.xlsx')
-    wb2 = openpyxl.load_workbook(r'C:\Users\lenovo\Desktop\excel\ACOPY.xlsx')
-    sheets1 = wb1.sheetnames  # 获取sheet页
-    sheets2 = wb2.sheetnames
-    sheet1 = wb1[sheets1[0]]
-    sheet2 = wb2[sheets2[0]]
+title = ["A", "B", "C"]
 
-    max_row = sheet1.max_row  # 最大行数
-    max_column = sheet1.max_column  # 最大列数
+# 在哪里搜索多个表格
+filelocation = "C://Users//lenovo//Desktop//excel"
+# 当前文件夹下搜索的文件名后缀
+fileform = ".xlsx"
+# 将合并后的表格存放到的位置
+filedestination = "C://Users//lenovo//Desktop//"
+# 合并后的表格命名为file
+file = "Finance_All"
 
-    for m in range(1, max_row + 1):
-        for n in range(97, 97 + max_column):  # chr(97)='a'
-            n = chr(n)  # ASCII字符
-            i = '%s%d' % (n, m)  # 单元格编号
-            cell1 = sheet1[i].value  # 获取data单元格数据
-            sheet2[i].value = cell1  # 赋值到test单元格
+# 首先查找默认文件夹下有多少文档需要整合
+filearray = []
+f_list = os.listdir(filelocation)
+for fileName in f_list:
+    # os.path.splitext():分离文件名与扩展名
+    if os.path.splitext(fileName)[1] == '.xlsx':
+        filearray.append(filelocation+"//"+fileName)
 
-    wb2.save(r'C:\Users\lenovo\Desktop\excel\ACOPY.xlsx')  # 保存数据
-    wb1.close()  # 关闭excel
-    wb2.close()
+print("在默认文件夹下有%d个文档" % len(filearray))
+ge = len(filearray)
+matrix = [None] * ge
 
+# 下面是将所有文件读数据到三维列表cell[][][]中（不包含表头）
+for i in range(ge):
+    fname = filearray[i]
+    bk = xlrd.open_workbook(fname)
+    try:
+        sh = bk.sheet_by_name("Sheet1")
+    except:
+        print("在文件%s中没有找到sheet，读取文件数据失败" % fname)
+    nrows = sh.nrows
+    matrix[i] = [0] * (nrows - 1)
 
-if __name__ == "__main__":
-    cpoy_sheet()
+    ncols = sh.ncols
+    for m in range(nrows - 1):
+        matrix[i][m] = ["0"] * ncols
+
+    for j in range(1, nrows):
+        for k in range(0, ncols):
+            matrix[i][j - 1][k] = sh.cell(j, k).value
+            # 下面是写数据到新的表格test.xls
+
+# 是把表头写上
+filename = xlwt.Workbook()
+sheet = filename.add_sheet("hel")
+
+for i in range(0, len(title)):
+    if title[i][-1] == "*":
+        crs = 1
+        sheet.write_merge(0, 0, i, crs + i, title[i])
+        # sheet.write(0, i, title[i][-2])
+    elif i >= 4:
+        merge_leng = i + 1
+        sheet.write(0, merge_leng, title[i])
+    else:
+        sheet.write(0, i, title[i])
+
+# 求和前面的文件一共写了多少行
+zh = 1
+for i in range(ge):
+    for j in range(len(matrix[i])):
+        for k in range(len(matrix[i][j])):
+            sheet.write(zh, k, matrix[i][j][k])
+        zh = zh + 1
+print("我已经将%d个文件合并成1个文件，并命名为%s.xls." % (ge, file))
+filename.save(filedestination + file + ".xls")
