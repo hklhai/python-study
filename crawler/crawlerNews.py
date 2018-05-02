@@ -36,8 +36,7 @@ print("=====================")
 
 # 遍历url获取网页内容
 for url in urlSet:
-    get_url_content(url)
-    soup = get_soup()
+    soup = get_url_content(driver, url)
     div = soup.find_all("div", class_="LEFT")
     print(div.h1)
 
