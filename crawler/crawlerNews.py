@@ -4,8 +4,7 @@ from crawler.crawler_utils import *
 
 categoryUrls = []
 
-driver = webdriver.Chrome(chrome_options=chrome_option())
-soup = get_url_content(driver, "http://news.qq.com/")
+soup = get_url_content("http://news.qq.com/")
 urlList = soup.find(id="channelNavPart").find_all("li")
 for url in urlList:
     # 主要列表列表
@@ -15,7 +14,7 @@ for url in urlList:
 urlSet = set()
 
 for url in categoryUrls:
-    soup = driver.get(url[1])
+    soup = get_url_content(url[1])
     if url[0] in ["首页", "国际", "社会", "军事"]:
         itemList = soup.select(".Q-tpWrap")
         for ele in itemList:
@@ -36,10 +35,6 @@ print("=====================")
 
 # 遍历url获取网页内容
 for url in urlSet:
-    soup = get_url_content(driver, url)
-    div = soup.find_all("div", class_="LEFT")
-    print(div.h1)
-
-# Refresh
-# driver.refresh()
-driver.close()
+    title, now_time, content, url = get_title_content(url)
+    contents = title + "^" + now_time + "^" + content + "^" + url
+    save_to_file(get_system_path() + get_now_date(), contents)
