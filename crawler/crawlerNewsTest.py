@@ -1,7 +1,8 @@
+#!/home/hadoop/anaconda3/bin/python
 # -*- coding: utf-8 -*-
 from crawler.crawler_utils import *
 
-urls = ["http://new.qq.com/omn/20180503/20180503A08NSN.html",
+urls = ["http://new.qq.com/omn/20180504/20180504A00137.html",
         "https://news.qq.com/a/20180502/040440.htm",
         "http://new.qq.com/omn/20180503/20180503A05S0L.html"]
 
