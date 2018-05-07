@@ -136,7 +136,18 @@ def get_title_content(url):
     soup = get_url_content(url)
     content_text = soup.find_all(name="p", attrs={"class": "text"})
     content_one = soup.find_all(name="p", attrs={"class": "one-p"})
-    content_list = (content_text if (len(content_text) > 0) else content_one)
+    content_style = soup.find_all(name="p", attrs={"style": "TEXT-INDENT: 2em"})
+    content = soup.find_all(name="p")
+
+    if len(content_text) > 0:
+        content_list = content_text
+    elif len(content_one) > 0:
+        content_list = content_one
+    elif len(content_style) > 0:
+        content_list = content_style
+    else:
+        content_list = content
+
     s = ""
     for x in range(len(content_list) - 1):
         if x == len(content_list) - 1:
@@ -148,8 +159,8 @@ def get_title_content(url):
             else:
                 continue
         s = s + tmp
-
-    return soup.h1.string, get_now_time(), s, url
+    s = s.replace('\r', '').replace('\n', '').replace('\t', '')
+    return soup.title.text, get_now_time(), s, url
 
 
 def get_now_time():

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from crawler.crawler_utils import *
 
-urls = ["http://new.qq.com/omn/20180504/20180504A00137.html",
+urls = ["https://mp.weixin.qq.com/s?__biz=MzIzNTAyODMwOA==&mid=2650208048&idx=1&sn=88008f3c0b56aaaa734de261c9aeb130&chksm=f0ef3d0bc798b41d7c32e360084226eacea7b8fc160080c120b3e7ba4754f681b90b07f69b68#rd",
         "https://news.qq.com/a/20180502/040440.htm",
         "http://new.qq.com/omn/20180503/20180503A05S0L.html"]
 
