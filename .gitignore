@@ -2,4 +2,7 @@ venv/
 .idea/
 checkpoint
 poetry.*
-
+dplearning/DCGAN/checkpoint/*
+dplearning/DCGAN/data/*
+dplearning/DCGAN/logs/*
+dplearning/DCGAN/samples/*
